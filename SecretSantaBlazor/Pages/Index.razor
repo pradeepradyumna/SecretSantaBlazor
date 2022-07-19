@@ -1,0 +1,331 @@
+﻿@page "/"
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+
+<div class="myinput">
+    <input type="text" placeholder="Participant's name" @bind="@Name" @onkeyup="@Enter" />
+
+</div>
+
+
+<div class="float-container">
+    <div class="float-child">
+
+        <table class="notebook-editable" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="notebook-editable-p">Participants </td>
+                <td></td>
+            </tr>
+            <tbody>
+
+                @foreach (string name in Names)
+                {
+                    <tr>
+                        <td>@name</td>
+                        <td>
+                            <button class="trash-btn" @onclick="()=>Remove(name)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="float-child">
+        <table class="notebook-editable">
+            <thead>
+
+                @if (SecretSantas.Count == 0)
+                {
+                    <p style="font-weight: bold; color: green;">Who is whose Santa? Shh... Shh...
+                    <p style="font-weight: bold; color: green;">Start entering particpant names and you'll see it.<span> &#128512;</span></p></p>
+                }
+                else
+                {
+                    <tr>
+                        <td class="notebook-editable-p"><span style="color: red">Santa</span></td>
+                        <td class="notebook-editable-p">Child</td>
+                    </tr>
+                }
+
+            </thead>
+
+            <tbody>
+                @if (SecretSantas.Count > 1)
+                {
+
+                    @foreach (SantaChild s in SecretSantas)
+                    {
+                        <tr>
+                            <td>@s.Santa</td>
+                            &#8594;
+                            <td>@s.Child</td>
+                        </tr>
+
+                    }
+
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<style>
+
+    td {
+        padding: 0 15px;
+        text-align: center;
+    }
+
+        td:first-child, th:first-child {
+            border-left: none;
+        }
+
+    .float-container {
+        /* padding: 20px; */
+        justify-content: space-evenly;
+        display: flex;
+        padding-top: 40px;
+    }
+
+    .float-child {
+        /*width: 50%;*/
+        width: auto;
+        float: left;
+        padding: 20px;
+    }
+
+    .todo {
+        /* margin: 0.5rem; */
+        font-size: 1.5rem;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 1s ease;
+    }
+
+    .notebook-editable .trash-btn {
+        /* background: #ff6f47;
+                                                                                                      color: white; */
+        background: #ffffff;
+        color: red;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        opacity: 0.5;
+    }
+
+        .notebook-editable .trash-btn:hover {
+            opacity: 1;
+        }
+
+    .myinput {
+        position: relative;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        padding-top: 30px;
+    }
+
+    input {
+        padding: 0.3rem;
+        font-size: 1.7rem;
+        border: none;
+        background: white;
+        border-radius: 5em;
+        border: 0;
+        outline: 0;
+        text-align: center;
+        width: 25%;
+    }
+
+        input:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    .notebook-editable-p {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .notebook-editable {
+        color: black;
+        border: 1px solid #eeeeee;
+        box-shadow: 1px 1px 0 #dddddd;
+        /* display: inline-block; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        vertical-align: top;
+        /*font-family: 'Marck Script', cursive;*/
+        font-family: "Reenie Beanie", cursive;
+        font-size: 24px;
+        line-height: 20px;
+        margin: 2% auto;
+        padding: 22px 20px 3px 40px;
+        resize: none;
+        min-height: 200px;
+        width: auto;
+        /* min-width: 200px; */
+
+        height: auto;
+        background-color: #ffffff;
+        background-image: -moz-linear-gradient( top, transparent, transparent 19px, #e7eff8 0px ), -moz-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -moz-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+        background-image: -webkit-linear-gradient( top, transparent, transparent 19px, #e7eff8 0 ), -webkit-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -webkit-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+        -webkit-background-size: 100% 20px;
+        background-size: 100% 20px;
+    }
+
+    .notebook-editable-participant {
+        color: #000000;
+        border: 1px solid #eeeeee;
+        box-shadow: 1px 1px 0 #dddddd;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        vertical-align: top;
+        /*font-family: 'Marck Script', cursive;*/
+        font-family: "Reenie Beanie", cursive;
+        font-size: 24px;
+        line-height: 20px;
+        margin: 2% auto;
+        padding: 22px 20px 3px 40px;
+        resize: none;
+        min-height: 200px;
+        width: auto;
+        min-width: 200px;
+        height: auto;
+        background-color: #ffffff;
+        background-image: -moz-linear-gradient( top, transparent, transparent 19px, #e7eff8 0px ), -moz-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -moz-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+        background-image: -webkit-linear-gradient( top, transparent, transparent 19px, #e7eff8 0 ), -webkit-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -webkit-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+        -webkit-background-size: 100% 20px;
+        background-size: 100% 20px;
+    }
+
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        min-height: 1.5rem;
+        height: 2rem;
+        background-color: rgb(14, 176, 230);
+        color: white;
+        text-align: center;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+
+    .notebook-editable-extras {
+        color: #000000;
+        border: 1px solid #eeeeee;
+        box-shadow: 1px 1px 0 #dddddd;
+        /* display: inline-block; */
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        vertical-align: top;
+        /*font-family: 'Marck Script', cursive;*/
+        font-family: "Reenie Beanie", cursive;
+        font-size: 24px;
+        line-height: 20px;
+        margin: 2% auto;
+        padding: 22px 20px 3px 40px;
+        resize: none;
+        min-height: 200px;
+        width: auto;
+        height: auto;
+        background-color: #eebebe;
+        background-image: -moz-linear-gradient( top, transparent, transparent 19px, #e7eff8 0px ), -moz-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -moz-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+        background-image: -webkit-linear-gradient( top, transparent, transparent 19px, #e7eff8 0 ), -webkit-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -webkit-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+        -webkit-background-size: 100% 20px;
+        background-size: 100% 20px;
+    }
+
+    .notebook-editable-participant:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .notebook-editable:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .notebook-editable-extras:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+@code {
+    private string Name = string.Empty;
+
+    private List<string> Names = new List<string>();
+
+    private void Enter(KeyboardEventArgs e)
+    {
+        if (string.IsNullOrEmpty(Name))
+            return;
+
+        if (e.Code == "Enter" || e.Key == "13")
+        {
+            Names.Add(Name);
+
+            Name = string.Empty;
+
+            SecretList();
+        }
+    }
+
+    private void Remove(string name)
+    {
+        Names.Remove(name);
+
+        SecretList();
+    }
+
+
+    private List<SantaChild> SecretSantas = new List<SantaChild>();
+
+    private void SecretList()
+    {
+        // reset everytime
+        SecretSantas = new List<SantaChild>();
+
+        var rnd = new Random();
+
+        // make temp collection
+        List<string> participants = new List<string>();
+        participants.AddRange(Names);
+
+        // randomize
+        var result = participants.OrderBy(item => rnd.Next());
+
+        var arr = result.ToArray();
+
+        // Players - Player and Secret Santa
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (i == arr.Length - 1)
+                SecretSantas.Add(new SantaChild() { Santa = arr[arr.Length - 1], Child = arr[0] });
+            else
+                SecretSantas.Add(new SantaChild() { Santa = arr[i], Child = arr[i + 1] });
+        }
+    }
+
+    private class SantaChild
+    {
+        public string Santa { get; set; }
+        public string Child { get; set; }
+    }
+}

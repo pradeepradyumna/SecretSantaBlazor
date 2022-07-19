@@ -1,0 +1,38 @@
+﻿
+
+
+<h3>Player</h3>
+<table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th style="width:150px">Name</th>
+            <th style="width:150px">Country</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Name</td>
+            <td><input type="button" value="Remove" @onclick="Remove" /></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><input type="text" id="txtName" /></td>
+            <td><input type="button" id="btnAdd" value="Add" /></td>
+        </tr>
+    </tfoot>
+</table>
+
+@code {
+    private List<string> Names = new List<string>();
+
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public string Name { get; set; }
+    private void Remove()
+    {
+        
+    }
+
+}
