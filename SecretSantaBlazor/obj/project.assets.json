@@ -2203,11 +2203,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\MyWorkspace\\SecretSantaBlazor\\SecretSantaBlazor.csproj",
+      "projectUniqueName": "D:\\Projects\\MyWorkspace\\gitSecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor.csproj",
       "projectName": "SecretSantaBlazor",
-      "projectPath": "D:\\Projects\\MyWorkspace\\SecretSantaBlazor\\SecretSantaBlazor.csproj",
+      "projectPath": "D:\\Projects\\MyWorkspace\\gitSecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor.csproj",
       "packagesPath": "C:\\Users\\pradeepp\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\MyWorkspace\\SecretSantaBlazor\\obj\\",
+      "outputPath": "D:\\Projects\\MyWorkspace\\gitSecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

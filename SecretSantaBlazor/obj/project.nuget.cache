@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TA8KJzLZp8Pv8GZSM2/JGmRs9opcEyCcJMIdImQLae+YRxMUvK3RMtd8zsVZI5LiRl88J5sp5Bj/dEZLe6neKg==",
+  "dgSpecHash": "Ru0nxlSpAnxpfbE1gmsNrT1D3il16mXcu4eejrGRj+CSVIkv37aCSb6wHzePPi8+/zK6XNeIeeugG8dxcJuczg==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\MyWorkspace\\SecretSantaBlazor\\SecretSantaBlazor.csproj",
+  "projectFilePath": "D:\\Projects\\MyWorkspace\\gitSecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor\\SecretSantaBlazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pradeepp\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.25\\microsoft.aspnetcore.authorization.3.1.25.nupkg.sha512",
     "C:\\Users\\pradeepp\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.25\\microsoft.aspnetcore.components.3.1.25.nupkg.sha512",

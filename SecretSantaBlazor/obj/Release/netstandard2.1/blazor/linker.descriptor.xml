@@ -1,0 +1,5 @@
+﻿<linker>
+  <assembly fullname="SecretSantaBlazor">
+    <type fullname="*" required="true" />
+  </assembly>
+</linker>
